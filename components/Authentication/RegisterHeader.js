@@ -1,7 +1,7 @@
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 
-const AuthenticationHeader = () => {
+const RegisterHeader = () => {
   return (
     <View style={styles.fruit}>
       <View style={styles.images}>
@@ -15,7 +15,7 @@ const AuthenticationHeader = () => {
   );
 };
 
-export default AuthenticationHeader;
+export default RegisterHeader;
 
 const styles = StyleSheet.create({
   fruit: {
