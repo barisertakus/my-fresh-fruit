@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   content: {
     paddingHorizontal: "7%",
     paddingTop: "10%",
-    paddingBottom: "30%",
+    paddingBottom: "10%",
     justifyContent: "space-between",
     flex: 1,
   },
