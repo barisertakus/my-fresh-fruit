@@ -5,6 +5,7 @@ import Home from './screens/Home';
 import Splash from './screens/Splash';
 import Welcome from './screens/Welcome';
 import Authentication from './screens/Authentication';
+import Password from './screens/Password';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +16,7 @@ function RootNavigation() {
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen name="Authentication" component={Authentication} />
+        <Stack.Screen name="Password" component={Password} />
         <Stack.Screen name="Home" component={Home} />
       </Stack.Navigator>
     </NavigationContainer>

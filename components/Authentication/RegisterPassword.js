@@ -2,24 +2,24 @@ import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import CustomInput from "../../utils/CustomInput";
 
-const RegisterForm = ({navigation}) => {
+const RegisterPassword = () => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
         <View>
-          <Text style={styles.headerText}>What is your email ?</Text>
-          <CustomInput placheHolder="Your mail" />
+          <Text style={styles.headerText}>What is your password ?</Text>
+          <CustomInput placheHolder="Your password" secureTextEntry />
         </View>
 
-        <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate("Password")}>
-          <Text style={styles.buttonText}>Continue for password!</Text>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Start Ordering!</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 };
 
-export default RegisterForm;
+export default RegisterPassword;
 
 const styles = StyleSheet.create({
   container: {

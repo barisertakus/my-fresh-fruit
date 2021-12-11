@@ -2,13 +2,14 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Input } from "react-native-elements";
 
-const CustomInput = ({ placheHolder, value }) => {
+const CustomInput = ({ placheHolder, value, ...props }) => {
   return (
     <Input
       placeholder={placheHolder}
       containerStyle={styles.container}
       inputContainerStyle={styles.inputContainer}
       style={styles.input}
+      {...props}
     />
   );
 };
