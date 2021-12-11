@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-const Welcome = () => {
+const Welcome = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
@@ -13,7 +13,7 @@ const Welcome = () => {
           </Text>
         </View>
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate("Authentication")}>
           <Text style={styles.buttonText}>Let's Continue!</Text>
         </TouchableOpacity>
       </View>
@@ -42,14 +42,14 @@ const styles = StyleSheet.create({
   regularText: {
     fontSize: 16,
   },
-  button:{
+  button: {
     backgroundColor: "#FFA451",
-    padding: 15,
+    padding: 20,
     borderRadius: 10,
     alignItems: "center",
   },
-  buttonText:{
+  buttonText: {
     color: "white",
     fontSize: 16,
-  }
+  },
 });

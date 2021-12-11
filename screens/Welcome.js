@@ -12,7 +12,7 @@ const Welcome = ({navigation}) => {
   return (
     <View style={styles.container}>
       <WelcomeHeader />
-      <WelcomeContent />
+      <WelcomeContent navigation={navigation} />
     </View>
   )
 }
