@@ -17,7 +17,7 @@ const Splash = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate("Welcome")}>
         <Image
           style={styles.image}
           source={require("../assets/images/splash.png")}
