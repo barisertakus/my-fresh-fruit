@@ -1,14 +1,45 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React, { useLayoutEffect } from "react";
+import {
+  Image,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
-const Splash = () => {
+const Splash = ({ navigation }) => {
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: false,
+    });
+  }, []);
+
   return (
-    <View>
-      <Text>sd</Text>
+    <View style={styles.container}>
+      <TouchableOpacity style={styles.button}>
+        <Image
+          style={styles.image}
+          source={require("../assets/images/splash.png")}
+          resizeMode="contain"
+        />
+      </TouchableOpacity>
     </View>
-  )
-}
+  );
+};
 
-export default Splash
+export default Splash;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  button: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  image: {
+    width: "100%",
+  },
+});
