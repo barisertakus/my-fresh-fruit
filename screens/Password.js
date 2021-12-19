@@ -11,7 +11,7 @@ const Password = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <RegisterHeader />
-      <RegisterPassword />
+      <RegisterPassword navigation={navigation} />
     </View>
   );
 };

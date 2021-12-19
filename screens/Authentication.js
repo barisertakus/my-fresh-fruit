@@ -5,10 +5,6 @@ import RegisterForm from '../components/Authentication/RegisterForm'
 
 const Authentication = ({navigation}) => {
 
-  useLayoutEffect(()=>{
-    navigation.setOptions({headerShown:false})
-  },[])
-
   return (
     <View style={styles.container}>
       <RegisterHeader />

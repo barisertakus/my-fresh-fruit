@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import CustomInput from "../../utils/CustomInput";
 
-const RegisterPassword = () => {
+const RegisterPassword = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
@@ -11,7 +11,7 @@ const RegisterPassword = () => {
           <CustomInput placheHolder="Your password" secureTextEntry />
         </View>
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate("Home")}>
           <Text style={styles.buttonText}>Start Ordering!</Text>
         </TouchableOpacity>
       </View>
