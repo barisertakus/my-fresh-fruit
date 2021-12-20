@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { ScrollView } from "react-native";
 import { Image, StyleSheet, Text, View } from "react-native";
@@ -70,6 +71,9 @@ const fruits = [
 ];
 
 const CardList = ({ name }) => {
+
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <Text style={styles.header}>{name}</Text>
@@ -85,6 +89,7 @@ const CardList = ({ name }) => {
               name={fruit.name}
               price={fruit.price}
               image={fruit.image}
+              onPress={()=>navigation.navigate("ProductDetails")}
             />
           );
         })}

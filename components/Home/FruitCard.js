@@ -2,7 +2,7 @@ import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
-const FruitCard = ({ name, price, image }) => {
+const FruitCard = ({ name, price, image, onPress }) => {
   return (
     <View style={styles.container} activeOpacity={0.7}>
       <View style={styles.icon}>
@@ -10,7 +10,7 @@ const FruitCard = ({ name, price, image }) => {
           <Icon name="favorite-border" size={20} color="#FFA451" />
         </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.image}>{image}</TouchableOpacity>
+      <TouchableOpacity onPress={onPress || undefined} style={styles.image}>{image}</TouchableOpacity>
 
       <View style={styles.name}>
         <Text style={styles.nameText}>{name}</Text>

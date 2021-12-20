@@ -3,7 +3,7 @@ import { ScrollView } from "react-native";
 import { Image, StyleSheet, Text, View } from "react-native";
 import FruitCard from "./FruitCard";
 
-const RecommendedFruits = () => {
+const RecommendedFruits = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Recommended Fruits</Text>
@@ -16,46 +16,37 @@ const RecommendedFruits = () => {
           name={"Honey lime"}
           price={2000}
           image={<Image source={require("../../assets/images/fruit1.png")} />}
+          onPress={()=>{navigation.navigate("ProductDetails")}}
         />
         <FruitCard
           name={"Berry mango"}
           price={8000}
           image={<Image source={require("../../assets/images/fruit2.png")} />}
+          onPress={()=>{navigation.navigate("ProductDetails")}}
         />
         <FruitCard
           name={"Honey lime"}
           price={2000}
           image={<Image source={require("../../assets/images/fruit1.png")} />}
+          onPress={()=>{navigation.navigate("ProductDetails")}}
         />
         <FruitCard
           name={"Honey lime"}
           price={2000}
           image={<Image source={require("../../assets/images/fruit1.png")} />}
+          onPress={()=>{navigation.navigate("ProductDetails")}}
         />
         <FruitCard
           name={"Berry mango"}
           price={8000}
           image={<Image source={require("../../assets/images/fruit2.png")} />}
+          onPress={()=>{navigation.navigate("ProductDetails")}}
         />
         <FruitCard
           name={"Honey lime"}
           price={2000}
           image={<Image source={require("../../assets/images/fruit1.png")} />}
-        />
-        <FruitCard
-          name={"Honey lime"}
-          price={2000}
-          image={<Image source={require("../../assets/images/fruit1.png")} />}
-        />
-        <FruitCard
-          name={"Berry mango"}
-          price={8000}
-          image={<Image source={require("../../assets/images/fruit2.png")} />}
-        />
-        <FruitCard
-          name={"Honey lime"}
-          price={2000}
-          image={<Image source={require("../../assets/images/fruit1.png")} />}
+          onPress={()=>{navigation.navigate("ProductDetails")}}
         />
       </ScrollView>
     </View>
