@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CategoryFruits from "../components/Home/CategoryFruits";
 import HomeHeader from "../components/Home/HomeHeader";
@@ -10,12 +10,12 @@ const Home = ({navigation}) => {
   return (
     <View style={styles.background}>
       <SafeAreaView style={styles.safeArea}>
-        <View style={styles.container}>
+        <ScrollView style={styles.container} contentContainerStyle={{flexGrow: 1}}>
           <HomeHeader />
           <SearchBar />
           <RecommendedFruits navigation={navigation} />
           <CategoryFruits navigation={navigation} />
-        </View>
+        </ScrollView>
       </SafeAreaView>
     </View>
   );

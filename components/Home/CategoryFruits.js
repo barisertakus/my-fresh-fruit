@@ -42,12 +42,13 @@ const renderTabBar = (props) => {
       labelStyle={{
         fontWeight: "600",
         textTransform: "capitalize",
-        fontSize: 18,
+        fontSize: 16,
       }}
       indicatorStyle={{
         backgroundColor: "#FFA451",
         paddingHorizontal: 20,
       }}
+      pressColor="white"
       style={styles.tabBar}
       {...props}
     />
