@@ -102,7 +102,7 @@ export default CardList;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
+
   },
   header: {
     fontSize: 18,
