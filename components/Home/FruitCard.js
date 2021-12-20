@@ -4,13 +4,13 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 
 const FruitCard = ({ name, price, image }) => {
   return (
-    <TouchableOpacity style={styles.container} activeOpacity={0.5}>
+    <View style={styles.container} activeOpacity={0.7}>
       <View style={styles.icon}>
         <TouchableOpacity>
           <Icon name="favorite-border" size={20} color="#FFA451" />
         </TouchableOpacity>
       </View>
-      <View style={styles.image}>{image}</View>
+      <TouchableOpacity style={styles.image}>{image}</TouchableOpacity>
 
       <View style={styles.name}>
         <Text style={styles.nameText}>{name}</Text>
@@ -22,7 +22,7 @@ const FruitCard = ({ name, price, image }) => {
           <Icon name="add-circle-outline" size={24} color="#FFA451" />
         </TouchableOpacity>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 };
 
@@ -34,11 +34,15 @@ const styles = StyleSheet.create({
     marginRight: 20,
     paddingHorizontal: 10,
     paddingVertical: 15,
+    paddingTop : 20,
     borderRadius: 20,
     justifyContent: "flex-end",
   },
   icon: {
     alignItems: "flex-end",
+    position : "absolute",
+    top: 10,
+    right: 10,
   },
   image: {
     paddingHorizontal: 25,

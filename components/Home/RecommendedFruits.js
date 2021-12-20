@@ -27,6 +27,36 @@ const RecommendedFruits = () => {
           price={2000}
           image={<Image source={require("../../assets/images/fruit1.png")} />}
         />
+        <FruitCard
+          name={"Honey lime"}
+          price={2000}
+          image={<Image source={require("../../assets/images/fruit1.png")} />}
+        />
+        <FruitCard
+          name={"Berry mango"}
+          price={8000}
+          image={<Image source={require("../../assets/images/fruit2.png")} />}
+        />
+        <FruitCard
+          name={"Honey lime"}
+          price={2000}
+          image={<Image source={require("../../assets/images/fruit1.png")} />}
+        />
+        <FruitCard
+          name={"Honey lime"}
+          price={2000}
+          image={<Image source={require("../../assets/images/fruit1.png")} />}
+        />
+        <FruitCard
+          name={"Berry mango"}
+          price={8000}
+          image={<Image source={require("../../assets/images/fruit2.png")} />}
+        />
+        <FruitCard
+          name={"Honey lime"}
+          price={2000}
+          image={<Image source={require("../../assets/images/fruit1.png")} />}
+        />
       </ScrollView>
     </View>
   );
