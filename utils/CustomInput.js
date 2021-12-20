@@ -8,7 +8,8 @@ const CustomInput = ({ placheHolder, value, ...props }) => {
       placeholder={placheHolder}
       containerStyle={styles.container}
       inputContainerStyle={styles.inputContainer}
-      style={styles.input}
+      placeholderTextColor="#C2BDBD"
+      inputStyle={styles.input}
       {...props}
     />
   );
@@ -19,13 +20,15 @@ export default CustomInput;
 const styles = StyleSheet.create({
   inputContainer: {
     borderBottomWidth: 0,
+    backgroundColor: "#F3F4F9",
+    padding: 7,
+    paddingLeft: 20,
+    borderRadius: 15,
   },
   container: {
     paddingLeft: 0,
   },
-  input: {
-    backgroundColor: "#F3F1F1",
-    padding: 20,
-    borderRadius: 15,
-  },
+  input:{
+    fontSize: 14
+  }
 });

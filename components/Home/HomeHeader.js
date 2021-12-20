@@ -20,7 +20,7 @@ const HomeHeader = () => {
         <View style={{ flexDirection: "row" }}>
           <Text style={styles.headerText}>Hello Baris, </Text>
           <Text style={[styles.headerText, styles.textBold]}>
-            What fruit combo{" "}
+            What fruit combo
           </Text>
         </View>
         <Text style={[styles.headerText, styles.textBold]}>
