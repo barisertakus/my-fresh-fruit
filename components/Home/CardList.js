@@ -102,7 +102,6 @@ export default CardList;
 
 const styles = StyleSheet.create({
   container: {
-
   },
   header: {
     fontSize: 18,
@@ -110,6 +109,6 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   cards: {
-    marginTop: 20,
+ 
   },
 });

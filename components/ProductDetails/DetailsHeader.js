@@ -45,8 +45,8 @@ const styles = StyleSheet.create({
   back: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 10,
-    marginLeft: 10,
+    marginTop: 20,
+    marginLeft: 20,
     padding: 5,
     borderRadius: 20,
     backgroundColor: "white",

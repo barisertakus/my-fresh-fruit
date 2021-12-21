@@ -11,7 +11,7 @@ const Home = ({navigation}) => {
     <View style={styles.background}>
       <SafeAreaView style={styles.safeArea}>
         <ScrollView style={styles.container} contentContainerStyle={{flexGrow: 1}}>
-          <HomeHeader />
+          <HomeHeader navigation={navigation}/>
           <SearchBar />
           <RecommendedFruits navigation={navigation} />
           <CategoryFruits navigation={navigation} />
@@ -25,7 +25,8 @@ export default Home;
 
 const styles = StyleSheet.create({
   background: { backgroundColor: "white", flex: 1 },
-  safeArea: { flex: 1 },
+  safeArea: { flex: 1
+  ,paddingBottom: 20 },
   padding: {},
   container: {
     paddingTop: 20,

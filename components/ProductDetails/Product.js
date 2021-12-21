@@ -1,6 +1,13 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { Avatar, Divider } from "react-native-elements";
+import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
 const Product = () => {
@@ -11,12 +18,12 @@ const Product = () => {
   };
 
   const decrease = () => {
-    setQuantity((quantity) => (quantity > 0 ? quantity - 1 : 0));
+    setQuantity((quantity) => (quantity > 1 ? quantity - 1 : 1));
   };
 
   return (
     <View style={styles.background}>
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <Text style={styles.header}>Berry Mango</Text>
         <View style={styles.priceDetails}>
           <View style={styles.quantity}>
@@ -32,29 +39,48 @@ const Product = () => {
         </View>
 
         <Divider style={styles.divider} />
-
-        <View style={styles.ingredients}>
-          <View style={styles.subHeader}>
-            <View style={styles.subHeaderWrapper}>
-              <Text style={styles.subHeaderText}>One Pack Contains:</Text>
+        <ScrollView style={{ flex: 0.65 }} showsVerticalScrollIndicator={false}>
+          <View style={styles.ingredients}>
+            <View style={styles.subHeader}>
+              <View style={styles.subHeaderWrapper}>
+                <Text style={styles.subHeaderText}>One Pack Contains:</Text>
+              </View>
+              <View style={{ flex: 1 }}></View>
             </View>
-            <View style={{ flex: 1 }}></View>
+            <Text style={styles.regularText}>
+              Red Quinoa, Lime, Honey, Blueberries, Strawberries, Mango, Fresh
+              mint.
+            </Text>
           </View>
-          <Text style={styles.regularText}>
-            Red Quinoa, Lime, Honey, Blueberries, Strawberries, Mango, Fresh
-            mint.
-          </Text>
-        </View>
 
-        <Divider style={styles.divider} />
+          <Divider style={styles.divider} />
 
-        <View style={styles.details}>
-          <Text style={styles.detailsText}>
-            If you are looking for a new fruit salad to eat today, quinoa is the
-            perfect brunch for you.
-          </Text>
-        </View>
+          <View style={styles.details}>
+            <Text style={styles.detailsText}>
+              If you are looking for a new fruit salad to eat today, quinoa is
+              the perfect brunch for you.
+            </Text>
+          </View>
 
+          <View style={styles.details}>
+            <Text style={styles.detailsText}>
+              If you are looking for a new fruit salad to eat today, quinoa is
+              the perfect brunch for you.
+            </Text>
+          </View>
+          <View style={styles.details}>
+            <Text style={styles.detailsText}>
+              If you are looking for a new fruit salad to eat today, quinoa is
+              the perfect brunch for you.
+            </Text>
+          </View>
+          <View style={styles.details}>
+            <Text style={styles.detailsText}>
+              If you are looking for a new fruit salad to eat today, quinoa is
+              the perfect brunch for you.
+            </Text>
+          </View>
+        </ScrollView>
         <View style={styles.addBasket}>
           <TouchableOpacity>
             <Avatar
@@ -76,7 +102,7 @@ const Product = () => {
             <Text style={styles.buttonText}>Add to basket</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </SafeAreaView>
     </View>
   );
 };
@@ -91,11 +117,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "white",
-    borderTopWidth: 2,
-    borderTopColor: "white",
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    paddingTop: 30,
     paddingHorizontal: 20,
   },
   header: {
@@ -151,8 +174,9 @@ const styles = StyleSheet.create({
   addBasket: {
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center",
-    flex: 1
+    alignItems: "flex-end",
+    flex: 0.35,
+    paddingBottom: 20,
   },
   button: {
     backgroundColor: "#FFA451",

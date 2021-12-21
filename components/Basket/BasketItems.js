@@ -42,9 +42,9 @@ const BasketItems = () => {
             <Divider style={styles.divider} />
           </ScrollView>
         </View>
-        <View style={styles.addBasket}>
+        <View style={styles.checkout}>
           <View style={styles.price}>
-            <Text style={[styles.regularText, { paddingBottom: 5 }]}>
+            <Text style={[styles.regularText, { paddingBottom: 8 }]}>
               Total
             </Text>
             <Text style={styles.priceText}>$ 150</Text>
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   divider: {
     marginTop: 20,
   },
-  addBasket: {
+  checkout: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "flex-end",
