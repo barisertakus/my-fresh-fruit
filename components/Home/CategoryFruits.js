@@ -84,7 +84,8 @@ const styles = StyleSheet.create({
     color: "black",
     elevation: 0,
     shadowOffset: { width: 0, height: 0 },
-    marginTop: 20,
+    marginTop: 10,
     marginHorizontal: 0,
+    
   },
 });

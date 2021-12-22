@@ -57,7 +57,7 @@ export default RecommendedFruits;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
+    marginTop: 10,
   },
   header: {
     fontSize: 18,

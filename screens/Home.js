@@ -6,15 +6,27 @@ import HomeHeader from "../components/Home/HomeHeader";
 import RecommendedFruits from "../components/Home/RecommendedFruits";
 import SearchBar from "../components/Home/SearchBar";
 
-const Home = ({navigation}) => {
+const Home = ({ navigation }) => {
   return (
     <View style={styles.background}>
       <SafeAreaView style={styles.safeArea}>
-        <ScrollView style={styles.container} contentContainerStyle={{flexGrow: 1}}>
-          <HomeHeader navigation={navigation}/>
+        <View style={{marginTop: 10,}}>
+          <HomeHeader navigation={navigation} />
           <SearchBar />
-          <RecommendedFruits navigation={navigation} />
-          <CategoryFruits navigation={navigation} />
+        </View>
+
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={{ flexGrow: 1 }}
+        >
+          <View style={{ flex: 1 }}>
+            <View>
+              <RecommendedFruits navigation={navigation} />
+            </View>
+            <View style={{ flex: 1 }}>
+              <CategoryFruits navigation={navigation} />
+            </View>
+          </View>
         </ScrollView>
       </SafeAreaView>
     </View>
@@ -25,12 +37,12 @@ export default Home;
 
 const styles = StyleSheet.create({
   background: { backgroundColor: "white", flex: 1 },
-  safeArea: { flex: 1
-  ,paddingBottom: 20 },
+  safeArea: {
+    flex: 1,
+    paddingHorizontal: 20,
+  },
   padding: {},
   container: {
-    paddingTop: 20,
-    paddingHorizontal: 20,
     flex: 1,
   },
 });
