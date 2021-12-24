@@ -3,7 +3,6 @@ import { Image, StyleSheet, Text, View } from "react-native";
 
 const BasketRow = ({item}) => {
   const [packs, setPacks] = useState(1);
-  {console.log(item)}
   return (
     <View style={styles.container}>
       <View style={styles.content}>
@@ -21,7 +20,7 @@ const BasketRow = ({item}) => {
       </View>
 
       <View style={styles.price}>
-        <Text style={styles.header}>$ {item.price}</Text>
+        <Text style={styles.header}>$ {item.price * item.quantity}</Text>
       </View>
     </View>
   );
