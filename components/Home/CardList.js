@@ -1,95 +1,56 @@
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ScrollView } from "react-native";
 import { Image, StyleSheet, Text, View } from "react-native";
 import FruitCard from "./FruitCard";
+import { db } from "../../firebase";
+import { images } from "../../Images";
+import { collection, getDocs } from "firebase/firestore";
 
-function shuffle(array) {
-  let currentIndex = array.length,  randomIndex;
-
-  // While there remain elements to shuffle...
-  while (currentIndex != 0) {
-
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-
-    // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex], array[currentIndex]];
-  }
-
-  return array;
-}
-
-const fruits = [
-  {
-    name: "Honey lime",
-    price: 2000,
-    image: <Image source={require("../../assets/images/fruit1.png")} />,
-  },
-  {
-    name: "Berry mango",
-    price: 8000,
-    image: <Image source={require("../../assets/images/fruit2.png")} />,
-  },
-  {
-    name: "Quinoa Salad",
-    price: 2000,
-    image: <Image source={require("../../assets/images/fruit3.png")} />,
-  },
-  {
-    name: "Tropical Fruit",
-    price: 2000,
-    image: <Image source={require("../../assets/images/fruit4.png")} />,
-  },
-  {
-    name: "Berry mango",
-    price: 8000,
-    image: <Image source={require("../../assets/images/fruit5.png")} />,
-  },
-  {
-    name: "Honey lime",
-    price: 2000,
-    image: <Image source={require("../../assets/images/fruit1.png")} />,
-  },
-  {
-    name: "Berry Mango",
-    price: 2000,
-    image: <Image source={require("../../assets/images/fruit1.png")} />,
-  },
-  {
-    name: "Quinoa Salad",
-    price: 8000,
-    image: <Image source={require("../../assets/images/fruit2.png")} />,
-  },
-  {
-    name: "Honey lime",
-    price: 2000,
-    image: <Image source={require("../../assets/images/fruit1.png")} />,
-  },
-];
-
-const CardList = ({ name }) => {
-
+const CardList = () => {
+  const [fruits, setFruits] = useState([]);
   const navigation = useNavigation();
+
+  useEffect(() => {
+    getDocs(collection(db, "fruits"))
+      .then((response) =>
+        setFruits(
+          response.docs.map((doc, i) => {
+            return { ...doc.data(), ...getImageFromSrc(doc.data().name) };
+          })
+        )
+      )
+      .catch((error) => console.log(error));
+  }, []);
+
+
+  const getImageFromSrc = (name) => {
+    return images.filter((image) => image.name === name)[0];
+  };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>{name}</Text>
       <ScrollView
         style={styles.cards}
         horizontal
         showsHorizontalScrollIndicator={false}
       >
-        {shuffle(fruits).map((fruit, i) => {
+        {fruits.map((fruit, i) => {
           return (
             <FruitCard
               key={i}
               name={fruit.name}
               price={fruit.price}
-              image={fruit.image}
-              onPress={()=>navigation.navigate("ProductDetails")}
+              image={
+                <Image
+                  source={fruit.src}
+                  style={{ width: 80, height: 80 }}
+                  resizeMode="contain"
+                />
+              }
+              onPress={() => {
+                navigation.navigate("ProductDetails", fruit);
+              }}
             />
           );
         })}
@@ -101,14 +62,13 @@ const CardList = ({ name }) => {
 export default CardList;
 
 const styles = StyleSheet.create({
-  container: {
-  },
+  container: {},
   header: {
     fontSize: 18,
     color: "#27214D",
     fontWeight: "600",
   },
   cards: {
- 
+    marginTop: 20,
   },
 });
