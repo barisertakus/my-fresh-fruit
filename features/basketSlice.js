@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   items: [],
   user: {},
-  totalPrice : 0,
+  totalPrice: 0,
 };
 
 const basketSlice = createSlice({
@@ -11,8 +11,18 @@ const basketSlice = createSlice({
   initialState,
   reducers: {
     addBasket: (state, action) => {
-      state.items = [...state.items, action.payload];
-      state.totalPrice += action.payload.price;
+      console.log(action.payload)
+      const { quantity } = action.payload;
+      let item = state.items.filter((item) => action.payload.name === item.name)[0];
+        console.log(item)
+      if (item) {
+        // it contains
+        item.quantity += action.payload.quantity;
+      } else {
+        state.items = [...state.items, action.payload];
+      }
+
+      state.totalPrice += action.payload.price * quantity;
     },
     removeFromBasket: (state, action) => {
       const items = items.filter((item) => item.id !== action.payload.id);
