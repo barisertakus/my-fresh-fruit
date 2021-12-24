@@ -3,11 +3,14 @@ import { StyleSheet, Text, View } from 'react-native'
 import DetailsHeader from '../components/ProductDetails/DetailsHeader'
 import Product from '../components/ProductDetails/Product'
 
-const ProductDetails = () => {
+const ProductDetails = ({navigation, route}) => {
+
+  const product = route.params;
+
   return (
     <View style={styles.container}>
-      <DetailsHeader />
-      <Product />
+      <DetailsHeader image={product.src} />
+      <Product product={product} />
     </View>
   )
 }

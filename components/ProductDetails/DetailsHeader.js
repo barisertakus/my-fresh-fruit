@@ -4,7 +4,7 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
-const DetailsHeader = () => {
+const DetailsHeader = ({image}) => {
 
   const navigation = useNavigation();
 
@@ -20,7 +20,7 @@ const DetailsHeader = () => {
         <View style={{ flex: 1 }}></View>
       </SafeAreaView>
       <View style={styles.image}>
-        <Image source={require("../../assets/images/fruit-detail.png")} />
+        <Image source={image} style={{height: 175, width: 175}} resizeMode="contain" />
       </View>
     </View>
   );

@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import {
   ScrollView,
@@ -9,8 +10,12 @@ import {
 import { Avatar, Divider } from "react-native-elements";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/MaterialIcons";
+import { useDispatch } from "react-redux";
+import { addBasket } from "../../features/basketSlice";
 
-const Product = () => {
+const Product = ({product}) => {
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
   const [quantity, setQuantity] = useState(1);
 
   const increase = () => {
@@ -21,10 +26,15 @@ const Product = () => {
     setQuantity((quantity) => (quantity > 1 ? quantity - 1 : 1));
   };
 
+  const handleBasket = () => {
+    dispatch(addBasket({...product, quantity}));
+    navigation.goBack();
+  }
+
   return (
     <View style={styles.background}>
       <SafeAreaView style={styles.container}>
-        <Text style={styles.header}>Berry Mango</Text>
+        <Text style={styles.header}>{product.name}</Text>
         <View style={styles.priceDetails}>
           <View style={styles.quantity}>
             <TouchableOpacity onPress={decrease} activeOpacity={0.4}>
@@ -35,7 +45,7 @@ const Product = () => {
               <Icon name="add-circle-outline" size={32} color="#FFA451" />
             </TouchableOpacity>
           </View>
-          <Text style={styles.priceText}>$ 2000</Text>
+          <Text style={styles.priceText}>$ {product.price}</Text>
         </View>
 
         <Divider style={styles.divider} />
@@ -48,8 +58,7 @@ const Product = () => {
               <View style={{ flex: 1 }}></View>
             </View>
             <Text style={styles.regularText}>
-              Red Quinoa, Lime, Honey, Blueberries, Strawberries, Mango, Fresh
-              mint.
+              {product.ingredients}
             </Text>
           </View>
 
@@ -57,27 +66,7 @@ const Product = () => {
 
           <View style={styles.details}>
             <Text style={styles.detailsText}>
-              If you are looking for a new fruit salad to eat today, quinoa is
-              the perfect brunch for you.
-            </Text>
-          </View>
-
-          <View style={styles.details}>
-            <Text style={styles.detailsText}>
-              If you are looking for a new fruit salad to eat today, quinoa is
-              the perfect brunch for you.
-            </Text>
-          </View>
-          <View style={styles.details}>
-            <Text style={styles.detailsText}>
-              If you are looking for a new fruit salad to eat today, quinoa is
-              the perfect brunch for you.
-            </Text>
-          </View>
-          <View style={styles.details}>
-            <Text style={styles.detailsText}>
-              If you are looking for a new fruit salad to eat today, quinoa is
-              the perfect brunch for you.
+              {product.description}
             </Text>
           </View>
         </ScrollView>
@@ -98,7 +87,7 @@ const Product = () => {
               activeOpacity={0.7}
             />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} activeOpacity={0.4}>
+          <TouchableOpacity style={styles.button} activeOpacity={0.4} onPress={handleBasket}>
             <Text style={styles.buttonText}>Add to basket</Text>
           </TouchableOpacity>
         </View>

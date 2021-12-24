@@ -1,26 +1,27 @@
 import React, { useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 
-const BasketRow = () => {
-  const [packs, setPacks] = useState(2);
+const BasketRow = ({item}) => {
+  const [packs, setPacks] = useState(1);
+  {console.log(item)}
   return (
     <View style={styles.container}>
       <View style={styles.content}>
         <View style={styles.imageWrapper}>
           <Image
-            source={require("../../assets/images/fruit1.png")}
+            source={item.src}
             style={styles.image}
           />
         </View>
 
         <View style={styles.name}>
-          <Text style={[styles.header, {paddingBottom: 10}]}>Quinoa fruit salad</Text>
-          <Text style={styles.regularText}>{packs} packs</Text>
+          <Text style={[styles.header, {paddingBottom: 10}]}>{item.name}</Text>
+          <Text style={styles.regularText}>{item.quantity} packs</Text>
         </View>
       </View>
 
       <View style={styles.price}>
-        <Text style={styles.header}>$ 20</Text>
+        <Text style={styles.header}>$ {item.price}</Text>
       </View>
     </View>
   );

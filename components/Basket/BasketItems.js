@@ -2,44 +2,26 @@ import React from "react";
 import { SafeAreaView, TouchableOpacity } from "react-native";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { Avatar, Divider } from "react-native-elements";
+import { useSelector } from "react-redux";
+import { itemsSelector, totalPriceSelector } from "../../features/basketSlice";
 import BasketRow from "./BasketRow";
 
 const BasketItems = () => {
+  const items = useSelector(itemsSelector);
+  const totalPrice = useSelector(totalPriceSelector);
   return (
     <View style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <View style={{ flex: 1 }}>
           <ScrollView>
-            <BasketRow />
-            <Divider style={styles.divider} />
-            <BasketRow />
-            <Divider style={styles.divider} />
-            <BasketRow />
-            <Divider style={styles.divider} />
-            <BasketRow />
-            <Divider style={styles.divider} />
-            <BasketRow />
-            <Divider style={styles.divider} />
-            <BasketRow />
-            <Divider style={styles.divider} />
-            <BasketRow />
-            <Divider style={styles.divider} />
-            <BasketRow />
-            <Divider style={styles.divider} />
-            <BasketRow />
-            <Divider style={styles.divider} />
-            <BasketRow />
-            <Divider style={styles.divider} />
-            <BasketRow />
-            <Divider style={styles.divider} />
-            <BasketRow />
-            <Divider style={styles.divider} />
-            <BasketRow />
-            <Divider style={styles.divider} />
-            <BasketRow />
-            <Divider style={styles.divider} />
-            <BasketRow />
-            <Divider style={styles.divider} />
+            {items.map((item,i) => {
+              return (
+                <View key={i}>
+                  <BasketRow item={item} />
+                  <Divider style={styles.divider} />
+                </View>
+              );
+            })}
           </ScrollView>
         </View>
         <View style={styles.checkout}>
@@ -47,7 +29,7 @@ const BasketItems = () => {
             <Text style={[styles.regularText, { paddingBottom: 8 }]}>
               Total
             </Text>
-            <Text style={styles.priceText}>$ 150</Text>
+            <Text style={styles.priceText}>$ {totalPrice}</Text>
           </View>
           <TouchableOpacity style={styles.button} activeOpacity={0.4}>
             <Text style={styles.buttonText}>Checkout</Text>
