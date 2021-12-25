@@ -12,8 +12,9 @@ const basketSlice = createSlice({
   reducers: {
     addBasket: (state, action) => {
       const { quantity } = action.payload;
-      let item = state.items.filter((item) => action.payload.name === item.name)[0];
-
+      let item = state.items.filter(
+        (item) => action.payload.name === item.name
+      )[0];
       if (item) {
         // it contains
         item.quantity += action.payload.quantity;
@@ -24,8 +25,12 @@ const basketSlice = createSlice({
       state.totalPrice += action.payload.price * quantity;
     },
     removeFromBasket: (state, action) => {
-      const items = items.filter((item) => item.id !== action.payload.id);
-      state = { ...state, items, totalPrice: totalPrice - action.payload.id };
+      let item = state.items.filter((item) => action.payload.name === item.name)[0];
+      if (item) {
+        const index = state.items.indexOf(item)
+        state.items.splice(index, 1);
+        state.totalPrice -= item.price * item.quantity
+      }
     },
   },
 });
