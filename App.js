@@ -5,7 +5,8 @@ import { Provider } from "react-redux";
 import RootNavigation from "./RootNavigation";
 
 export default function App() {
-  LogBox.ignoreLogs(["AsyncStorage has been extracted from react-native core"]);
+  LogBox.ignoreLogs(["AsyncStorage has been extracted from react-native core",
+"Setting a timer for a long period"]);
   return (
     <Provider store={store}>
       <RootNavigation />

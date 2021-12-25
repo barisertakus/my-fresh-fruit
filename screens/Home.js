@@ -7,28 +7,23 @@ import RecommendedFruits from "../components/Home/RecommendedFruits";
 import SearchBar from "../components/Home/SearchBar";
 
 const Home = ({ navigation }) => {
-
   return (
     <View style={styles.background}>
       <SafeAreaView style={styles.safeArea}>
-        <View style={{ marginTop: 10 }}>
-          <HomeHeader navigation={navigation} />
-          <SearchBar />
-        </View>
-
         <ScrollView
           style={styles.container}
           contentContainerStyle={{ flexGrow: 1 }}
         >
-          <View style={{ flex: 1 }}>
-            <View>
-              <RecommendedFruits navigation={navigation}/>
-            </View>
-            <View style={{ flex: 1 }}>
-              <CategoryFruits navigation={navigation} />
-            </View>
+          <View style={{ marginTop: 10 }}>
+            <HomeHeader navigation={navigation} />
+            <SearchBar />
           </View>
+
+          <RecommendedFruits navigation={navigation} />
         </ScrollView>
+        <View style={{ flex: 0.5 }}>
+          <CategoryFruits navigation={navigation} />
+        </View>
       </SafeAreaView>
     </View>
   );
@@ -41,6 +36,7 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
     paddingHorizontal: 20,
+    paddingBottom: 20,
   },
   padding: {},
   container: {
