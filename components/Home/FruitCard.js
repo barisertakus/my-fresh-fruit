@@ -1,8 +1,20 @@
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
+import { useDispatch } from "react-redux";
+import { closeSnackbar, openSnackbar } from "../../features/snackBarSlice";
 
 const FruitCard = ({ name, price, image, onPress }) => {
+
+  const dispatch = useDispatch();
+
+  const showSnackbar = () => {
+    dispatch(openSnackbar({message : "Helooooo"}));
+    setTimeout(() => {
+      dispatch(closeSnackbar())
+    }, 2000);
+  };
+
   return (
     <View style={styles.container} activeOpacity={0.7}>
       <View style={styles.icon}>
@@ -18,7 +30,7 @@ const FruitCard = ({ name, price, image, onPress }) => {
 
       <View style={styles.price}>
         <Text style={styles.priceText}>$ {price}</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={showSnackbar}>
           <Icon name="add-circle-outline" size={24} color="#FFA451" />
         </TouchableOpacity>
       </View>

@@ -11,10 +11,9 @@ const basketSlice = createSlice({
   initialState,
   reducers: {
     addBasket: (state, action) => {
-      console.log(action.payload)
       const { quantity } = action.payload;
       let item = state.items.filter((item) => action.payload.name === item.name)[0];
-        console.log(item)
+
       if (item) {
         // it contains
         item.quantity += action.payload.quantity;

@@ -1,7 +1,9 @@
-import React from "react";
+import { useNavigation } from "@react-navigation/native";
+import React, { useState } from "react";
 import { SafeAreaView, TouchableOpacity } from "react-native";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { Avatar, Divider } from "react-native-elements";
+import SnackbarComponent from "react-native-snackbar-component";
 import { useSelector } from "react-redux";
 import { itemsSelector, totalPriceSelector } from "../../features/basketSlice";
 import BasketRow from "./BasketRow";
@@ -9,12 +11,26 @@ import BasketRow from "./BasketRow";
 const BasketItems = () => {
   const items = useSelector(itemsSelector);
   const totalPrice = useSelector(totalPriceSelector);
+  const [visible, setVisible] = useState(false);
+  const navigation = useNavigation();
+  const handlePress = () => {
+    setVisible(true);
+  };
+
   return (
     <View style={styles.container}>
+      <SnackbarComponent
+        visible={visible}
+        textMessage="Hello There!"
+        actionHandler={() => setVisible(false)}
+        actionText="let's go"
+        position="top"
+      />
+
       <SafeAreaView style={styles.safeArea}>
         <View style={{ flex: 1 }}>
           <ScrollView>
-            {items.map((item,i) => {
+            {items.map((item, i) => {
               return (
                 <View key={i}>
                   <BasketRow item={item} />
@@ -31,7 +47,11 @@ const BasketItems = () => {
             </Text>
             <Text style={styles.priceText}>$ {totalPrice}</Text>
           </View>
-          <TouchableOpacity style={styles.button} activeOpacity={0.4}>
+          <TouchableOpacity
+            style={styles.button}
+            activeOpacity={0.4}
+            onPress={handlePress}
+          >
             <Text style={styles.buttonText}>Checkout</Text>
           </TouchableOpacity>
         </View>

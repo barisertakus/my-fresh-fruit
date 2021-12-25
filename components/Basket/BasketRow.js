@@ -1,23 +1,28 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-const BasketRow = ({item}) => {
-  const [packs, setPacks] = useState(1);
+const BasketRow = ({ item }) => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <View style={styles.content}>
+      <TouchableOpacity
+        style={styles.content}
+        onPress={() => {
+          navigation.navigate("ProductDetails", item);
+        }}
+      >
         <View style={styles.imageWrapper}>
-          <Image
-            source={item.src}
-            style={styles.image}
-          />
+          <Image source={item.src} style={styles.image} resizeMode="contain" />
         </View>
 
         <View style={styles.name}>
-          <Text style={[styles.header, {paddingBottom: 10}]}>{item.name}</Text>
+          <Text style={[styles.header, { paddingBottom: 10 }]}>
+            {item.name}
+          </Text>
           <Text style={styles.regularText}>{item.quantity} packs</Text>
         </View>
-      </View>
+      </TouchableOpacity>
 
       <View style={styles.price}>
         <Text style={styles.header}>$ {item.price * item.quantity}</Text>
@@ -36,9 +41,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingTop: 20,
   },
-  content:{
+  content: {
     flexDirection: "row",
-    alignItems: "center"
+    alignItems: "center",
   },
   imageWrapper: {
     padding: 10,
@@ -50,9 +55,7 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50,
   },
-  name: {
-    
-  },
+  name: {},
   price: {},
   header: {
     color: "#27214D",
@@ -61,6 +64,6 @@ const styles = StyleSheet.create({
   },
   regularText: {
     color: "#27214D",
-    fontSize: 12,
+    fontSize: 14,
   },
 });
