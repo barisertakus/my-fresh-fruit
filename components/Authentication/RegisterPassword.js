@@ -11,7 +11,7 @@ const RegisterPassword = ({navigation}) => {
           <CustomInput placheHolder="Your password" secureTextEntry />
         </View>
 
-        <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate("Home")}>
+        <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate("DrawerNav")}>
           <Text style={styles.buttonText}>Start Ordering!</Text>
         </TouchableOpacity>
       </View>
