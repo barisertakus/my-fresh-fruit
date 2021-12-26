@@ -1,9 +1,12 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useDispatch } from "react-redux";
+import { removeFromBasket } from "../../features/basketSlice";
 
 const BasketRow = ({ item }) => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
   return (
     <View style={styles.container}>
       <TouchableOpacity
@@ -26,6 +29,9 @@ const BasketRow = ({ item }) => {
 
       <View style={styles.price}>
         <Text style={styles.header}>$ {item.price * item.quantity}</Text>
+        <TouchableOpacity style={styles.remove} onPress={()=>dispatch(removeFromBasket(item))}>
+          <Text style={styles.removeTxt}>Remove</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -56,7 +62,12 @@ const styles = StyleSheet.create({
     width: 50,
   },
   name: {},
-  price: {},
+  remove: {
+    paddingTop: 10,
+  },
+  removeTxt: {
+    fontWeight: "600"
+  },
   header: {
     color: "#27214D",
     fontSize: 16,
