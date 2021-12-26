@@ -15,7 +15,7 @@ const Stack = createNativeStackNavigator();
 function RootNavigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false, animation: "slide_from_bottom" }} initialRouteName="DrawerNav">
+      <Stack.Navigator screenOptions={{ headerShown: false, animation: "slide_from_bottom" }} initialRouteName="Splash">
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen name="Authentication" component={Authentication} />
