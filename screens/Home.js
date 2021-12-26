@@ -15,6 +15,10 @@ const Home = ({ navigation }) => {
   const snackbar = useSelector(selectSnackbar);
   const dispatch = useDispatch();
 
+  useLayoutEffect(() => {
+    navigation.setOptions({ headerShown: false });
+  }, []);
+
   return (
     <View style={styles.background}>
       <SafeAreaView style={styles.safeArea}>
@@ -34,15 +38,17 @@ const Home = ({ navigation }) => {
         <ScrollView
           style={styles.container}
           contentContainerStyle={{ flexGrow: 1 }}
+          showsVerticalScrollIndicator={false}
         >
+
           <View style={{ marginTop: 10 }}>
             <HomeHeader navigation={navigation} />
-            <SearchBar />
+            <SearchBar navigation={navigation} />
           </View>
 
           <RecommendedFruits navigation={navigation} />
         </ScrollView>
-        <View style={{ flex: 0.5 }}>
+        <View style={{ height: 270 }}>
           <CategoryFruits navigation={navigation} />
         </View>
       </SafeAreaView>

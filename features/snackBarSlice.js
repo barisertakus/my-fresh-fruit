@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   visible: false,
   message: "",
+  color : "orange",
 };
 
 const snackBarSlice = createSlice({
@@ -13,6 +14,7 @@ const snackBarSlice = createSlice({
       if(!state.visible){
         state.visible = true;
         state.message = action.payload.message;
+        state.color = action.payload.color;
       }
     },
     closeSnackbar: (state, action) => {

@@ -39,15 +39,7 @@ const CardList = () => {
           return (
             <FruitCard
               key={i}
-              name={fruit.name}
-              price={fruit.price}
-              image={
-                <Image
-                  source={fruit.src}
-                  style={{ width: 80, height: 80 }}
-                  resizeMode="contain"
-                />
-              }
+              item={fruit}
               onPress={() => {
                 navigation.navigate("ProductDetails", fruit);
               }}

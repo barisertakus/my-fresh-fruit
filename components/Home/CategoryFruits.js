@@ -42,7 +42,7 @@ const renderTabBar = (props) => {
       labelStyle={{
         fontWeight: "600",
         textTransform: "capitalize",
-        fontSize: 16,
+        fontSize: 15,
       }}
       indicatorStyle={{
         backgroundColor: "#FFA451",
