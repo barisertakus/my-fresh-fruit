@@ -10,13 +10,20 @@ import {
 import { Avatar, Divider } from "react-native-elements";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/MaterialIcons";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { addBasket } from "../../features/basketSlice";
+import { itemsSelector, toggleFavorite } from "../../features/favoritesSlice";
 
 const Product = ({product}) => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const [quantity, setQuantity] = useState(1);
+
+  const favorites = useSelector(itemsSelector);
+  const isFavorite = () => {
+    return favorites.find(favorite=> favorite.name === product.name)
+  }
 
   const increase = () => {
     setQuantity((quantity) => quantity + 1);
@@ -71,7 +78,7 @@ const Product = ({product}) => {
           </View>
         </ScrollView>
         <View style={styles.addBasket}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>dispatch(toggleFavorite(product))}>
             <Avatar
               size={60}
               overlayContainerStyle={{
@@ -82,7 +89,7 @@ const Product = ({product}) => {
                 name: "heart",
                 color: "#FFA451",
                 size: 28,
-                type: "font-awesome-5",
+                type: isFavorite() ? "material-community" : "font-awesome-5",
               }}
               activeOpacity={0.7}
             />
