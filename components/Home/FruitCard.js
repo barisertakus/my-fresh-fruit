@@ -1,36 +1,57 @@
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addBasket } from "../../features/basketSlice";
+import { addfavorites, itemsSelector, toggleFavorite } from "../../features/favoritesSlice";
 import { closeSnackbar, openSnackbar } from "../../features/snackBarSlice";
 
-const FruitCard = ({ name, price, image, onPress }) => {
-
+const FruitCard = ({ item, onPress }) => {
   const dispatch = useDispatch();
+  
+  const favorites = useSelector(itemsSelector);
+  const isFavorite = () => {
+    return favorites.find(favorite=> favorite.name === item.name)
+  }
 
-  const showSnackbar = () => {
-    dispatch(openSnackbar({message : "Helooooo"}));
+  const handleFavorite = () => {
+    dispatch(toggleFavorite(item));
+    dispatch(openSnackbar({ message: `Product has been ${!isFavorite() ? "added to" : "removed from"} the Favorites !`, color : "#FF8C42" }));
     setTimeout(() => {
-      dispatch(closeSnackbar())
+      dispatch(closeSnackbar());
+    }, 2000);
+  };
+  
+  const addToCart = () => {
+    dispatch(addBasket({...item, quantity: 1}));
+    dispatch(openSnackbar({ message: "Product has been added to the cart !", color : "orange" }));
+    setTimeout(() => {
+      dispatch(closeSnackbar());
     }, 2000);
   };
 
   return (
     <View style={styles.container} activeOpacity={0.7}>
       <View style={styles.icon}>
-        <TouchableOpacity>
-          <Icon name="favorite-border" size={20} color="#FFA451" />
+        <TouchableOpacity onPress={handleFavorite}>
+          <Icon name={isFavorite() ? "favorite" : "favorite-border"} size={20} color="#FFA451" />
         </TouchableOpacity>
       </View>
-      <TouchableOpacity onPress={onPress || undefined} style={styles.image}>{image}</TouchableOpacity>
+      <TouchableOpacity onPress={onPress || undefined} style={styles.image}>
+        <Image
+          source={item.src}
+          style={{ width: 80, height: 80 }}
+          resizeMode="contain"
+        />
+      </TouchableOpacity>
 
       <View style={styles.name}>
-        <Text style={styles.nameText}>{name}</Text>
+        <Text style={styles.nameText}>{item.name}</Text>
       </View>
 
       <View style={styles.price}>
-        <Text style={styles.priceText}>$ {price}</Text>
-        <TouchableOpacity onPress={showSnackbar}>
+        <Text style={styles.priceText}>$ {item.price}</Text>
+        <TouchableOpacity onPress={addToCart}>
           <Icon name="add-circle-outline" size={24} color="#FFA451" />
         </TouchableOpacity>
       </View>
@@ -46,13 +67,13 @@ const styles = StyleSheet.create({
     marginRight: 20,
     paddingHorizontal: 10,
     paddingVertical: 15,
-    paddingTop : 10,
+    paddingTop: 10,
     borderRadius: 20,
     justifyContent: "flex-end",
   },
   icon: {
     alignItems: "flex-end",
-    position : "relative",
+    position: "relative",
     top: 0,
     right: 0,
   },
