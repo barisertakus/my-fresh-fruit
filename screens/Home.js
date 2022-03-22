@@ -22,25 +22,26 @@ const Home = ({ navigation }) => {
   return (
     <View style={styles.background}>
       <SafeAreaView style={styles.safeArea}>
+      <SnackbarComponent
+          visible={snackbar.visible}
+          textMessage={snackbar.message}
+          actionHandler={() => dispatch(closeSnackbar())}
+          accentColor="blue"
+          position="top"
+          autoHidingTime={2000}
+          backgroundColor={snackbar.color}
+          messageColor="white"
+          actionText="Ok!"
+          top={50}
+        />
         <View>
-        <SnackbarComponent
-            visible={snackbar.visible}
-            textMessage={snackbar.message}
-            actionHandler={() => dispatch(closeSnackbar())}
-            accentColor="blue"
-            position="top"
-            autoHidingTime={2000}
-            backgroundColor={snackbar.color}
-            messageColor="white"
-            actionText="Ok!"
-          />
+       
         </View>
         <ScrollView
           style={styles.container}
           contentContainerStyle={{ flexGrow: 1 }}
           showsVerticalScrollIndicator={false}
         >
-
           <View style={{ marginTop: 10 }}>
             <HomeHeader navigation={navigation} />
             <SearchBar navigation={navigation} />
